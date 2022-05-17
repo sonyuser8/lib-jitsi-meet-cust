@@ -215,7 +215,12 @@ const ScreenObtainer = {
         }
 
         const { desktopSharingFrameRate } = this.options;
-        const video = typeof desktopSharingFrameRate === 'object' ? { frameRate: desktopSharingFrameRate } : true;
+        const video = typeof desktopSharingFrameRate === 'object' ? 
+        { 
+            frameRate: desktopSharingFrameRate, 
+            width: { ideal: 1920, max: 1920 }, 
+            height: { ideal: 1080, max: 1080}
+        } : true;
         const audio = this._getAudioConstraints();
 
         // At the time of this writing 'min' constraint for fps is not supported by getDisplayMedia.

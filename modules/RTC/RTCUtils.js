@@ -376,7 +376,7 @@ class RTCUtils extends Listenable {
         this.pcConstraints = browser.isChromiumBased() || browser.isReactNative()
             ? { optional: [
                 { googScreencastMinBitrate: 100 },
-                { googCpuOveruseDetection: true }
+                { googCpuOveruseDetection: false }
             ] }
             : {};
 

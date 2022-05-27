@@ -168,11 +168,17 @@ const ScreenObtainer = {
                                     chromeMediaSourceId: streamId,
                                     minFrameRate: desktopSharingFrameRate?.min ?? SS_DEFAULT_FRAME_RATE,
                                     maxFrameRate: desktopSharingFrameRate?.max ?? SS_DEFAULT_FRAME_RATE,
-                                    maxWidth: window.screen.width,
-                                    maxHeight: window.screen.height
+                                    maxWidth: window.screen.width  * window.devicePixelRatio,
+                                    minWidth: window.screen.width * window.devicePixelRatio,
+                                    maxHeight: window.screen.height * window.devicePixelRatio,
+                                    minHeight: window.screen.height * window.devicePixelRatio
                                 }
                             }
                         };
+                        console.log('window.screen.width:', window.screen.width);
+                        console.log('window.screen.height:', window.screen.height);
+                        console.log('window.devicePixelRatio:', window.devicePixelRatio);
+                        console.log('constraints:',constraints);
 
                         // We have to use the old API on Electron to get a desktop stream.
                         navigator.mediaDevices.getUserMedia(constraints)
